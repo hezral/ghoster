@@ -38,9 +38,6 @@ class GhosterWindow(Gtk.ApplicationWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-
-
-
         #-- view --------#
         workspaces_view = WorkspacesView()
         settings_view = SettingsView()
@@ -91,12 +88,11 @@ class GhosterWindow(Gtk.ApplicationWindow):
 
         #-- GhosterWindow construct--------#
         self.props.resizable = False #set this and window will expand and retract based on child
-        # self.props.skip_taskbar_hint = True
         self.title = "Ghoster"
         self.set_keep_above(True)
         self.get_style_context().add_class("rounded")
-        self.set_size_request(600, -1) #set width to -1 to expand and retract based on content
-        self.props.window_position = Gtk.WindowPosition.MOUSE
+        self.set_size_request(650, 550) #set width to -1 to expand and retract based on content
+        self.props.window_position = Gtk.WindowPosition.CENTER_ALWAYS
         self.set_titlebar(headerbar)
         self.add(stack)
         
@@ -111,7 +107,6 @@ class GhosterWindow(Gtk.ApplicationWindow):
         self.state_flags_changed_count = 0
         self.active_state_flags = ['GTK_STATE_FLAG_NORMAL', 'GTK_STATE_FLAG_DIR_LTR']
 
-        
     def on_start_settings(self):
         # read user saved settings
         gio_settings = Gio.Settings(schema_id="com.github.hezral.ghoster")
