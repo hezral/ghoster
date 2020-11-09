@@ -1,0 +1,120 @@
+/*
+   Copyright 2020 Adi Hezral (hezral@gmail.com) (https://github.com/hezral)
+
+   This file is part of Ghoster ("Application").
+
+    The Application is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    The Application is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this Application.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/* -- colors -- */
+/* ------------------------------ */
+@define-color shaded_dark shade(@theme_base_color, 0.87);
+@define-color shaded_darker shade(@theme_base_color, 0.85);
+@define-color shaded_base shade(@theme_base_color, 0.98);
+@define-color popup shade(@theme_base_color, 0.98);
+
+
+*:backdrop {
+    color: gray;
+}
+/* ------------------------------ */
+
+
+/* -- headerbar -- */
+/* ------------------------------ */
+.lookup-word-header {
+
+    font-size: larger;
+    font-weight: bold;
+}
+
+headerbar {
+    padding-left: 16px;
+    padding-right: 12px;
+    padding-top: 4px;
+}
+/* ------------------------------ */
+
+
+/* -- stack -- */
+/* ------------------------------ */
+stack {
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+/* ------------------------------ */
+
+
+/* -- settings-view -- */
+/* ------------------------------ */
+.stack-settings, .headerbar-settings {
+    background-color: @shaded_dark;
+}
+
+.settings-frame {
+    border-radius: 4px;
+    background-color: @shaded_darker;
+}
+
+.settings-sub-label {
+    font-style: italic;
+    font-size: 0.9em;
+    color: gray;
+}
+/* ------------------------------ */
+
+
+/* -- Ghoster icon animation -- */
+/* ------------------------------ */
+.Ghoster-icon-left {
+    animation: floating 1.5s ease-in-out infinite;
+}
+
+@keyframes float-down {
+    25% {-gtk-icon-transform: translateY(0px);}
+    75% {-gtk-icon-transform: translateY(-5px);}
+    100% {-gtk-icon-transform: translateX(0px);}
+}
+
+.Ghoster-icon-right {
+    animation: floating 1.25s ease-in-out infinite;
+}
+
+@keyframes floating {
+    25% {-gtk-icon-transform: translateY(0px);}
+    75% {-gtk-icon-transform: translateY(3px);}
+    100% {-gtk-icon-transform: translateY(0px);}
+}
+
+@keyframes floating-two {
+    from {
+        -gtk-icon-transform: translateY(60px);
+    }
+    25% {-gtk-icon-transform: translateY(60px);}
+    75% {-gtk-icon-transform: translateY(65px);}
+    100% {-gtk-icon-transform: translateY(60px);}	
+}
+
+.download-icon-start {
+    -gtk-icon-transform: translateY(60px);
+    transition: -gtk-icon-transform 1.25s;
+    animation: floating-two 1.25s ease-in-out infinite;
+
+}
+/* ------------------------------ */
+
+
+
+
+
