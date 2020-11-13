@@ -19,9 +19,9 @@
 
 /* -- colors -- */
 /* ------------------------------ */
-@define-color shaded_dark shade(@theme_base_color, 0.87);
-@define-color shaded_darker shade(@theme_base_color, 0.85);
-@define-color shaded_base shade(@theme_base_color, 0.98);
+@define-color shaded_dark shade(#6A0CAB, 0.87);
+@define-color shaded_darker shade(#6A0CAB, 0.85);
+@define-color shaded_base shade(#6A0CAB, 0.98);
 @define-color popup shade(@theme_base_color, 0.98);
 
 
@@ -114,7 +114,35 @@ stack {
 }
 /* ------------------------------ */
 
+window, stack, headerbar {
+    background-color: #6A0CAB;
+    }
+    
+ 
+headerbar {
 
+box-shadow:
+1px 0 rgba(255,255,255,0.12) inset,
+-1px 0 rgba(255,255,255,0.12) inset,
+0 1px rgba(255,255,255,0.2) inset;
 
+}
+
+window, stack#main-stack {
+box-shadow:
+1px 0 rgba(255,255,255,0.12) inset,
+-1px 0 rgba(255,255,255,0.12) inset,
+0 -1px rgba(255,255,255,0.08) inset;
+
+}
+
+box#workspace-area {
+    box-shadow:
+    0 0 0 1px rgba(0,0,0,0.12),
+    0 3px 6px  rgba(0,0,0,0.16),
+    0 3px 6px  rgba(0,0,0,0.23),
+    0 14px 28px  rgba(0,0,0,0);
+    border-radius: 4px;
+}
 
 

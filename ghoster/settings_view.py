@@ -37,7 +37,7 @@ class SettingsView(Gtk.Grid):
 
         #-- settings --------#
         #------ theme switch ----#
-        theme_switch = SubSettings(name="theme-switch", label="Switch between Dark/Light theme", sublabel=None, separator=True)
+        theme_switch = SubSettings(name="theme-switch", label="Switch between Dark/Light theme", sublabel=None, separator=False)
         theme_switch.switch.bind_property("active", gtk_settings, "gtk_application_prefer_dark_theme", GObject.BindingFlags.SYNC_CREATE)
         gio_settings.bind("prefer-dark-style", theme_switch.switch, "active", Gio.SettingsBindFlags.DEFAULT)
 

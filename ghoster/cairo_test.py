@@ -49,7 +49,7 @@ class WorkspaceArea(Gtk.DrawingArea):
         #print(locals())
         DOCK_WIDTH = 120
         DOCK_HEIGHT = 10
-        DOCK_RADIUS = 4
+        DOCK_RADIUS = 3
 
         PANEL_HEIGHT = 8
         PLUS_SIZE = 70
