@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-20T09:12:56.831Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="2r_VsKbdbpyp-_7elhR3" version="13.10.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2020-11-20T09:14:07.784Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="ZKkJTlA0YiMEHLeWA0bb" version="13.10.0" type="github" pages="2">
   <diagram id="j1ny3Ss1Q0sh5PDAtYMi" name="flow">
     <mxGraphModel dx="1886" dy="961" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -11,7 +11,7 @@
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="180" y="280" />
-              <mxPoint x="300" y="280" />
+              <mxPoint x="340" y="280" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -73,7 +73,7 @@
           <mxGeometry x="1160" y="40" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-6" value="workspace_view" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;perimeterSpacing=0;rounded=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
-          <mxGeometry x="800" y="320" width="200" height="200" as="geometry" />
+          <mxGeometry x="800" y="320" width="200" height="360" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-32" value="signal: workspace-event" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="C7c_2EIT-gh8rbHYRcQ1-6">
           <mxGeometry x="20" y="40" width="160" height="30" as="geometry" />
@@ -88,7 +88,7 @@
           <mxGeometry x="20" y="80" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-15" value="app_manager" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;rounded=1;shadow=0;sketch=0;glass=0;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
-          <mxGeometry x="240" y="320" width="200" height="350" as="geometry" />
+          <mxGeometry x="240" y="320" width="200" height="360" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-26" value="signal: workspace" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="C7c_2EIT-gh8rbHYRcQ1-15">
           <mxGeometry x="20" y="40" width="160" height="30" as="geometry" />
