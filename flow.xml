@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-11-20T09:10:05.511Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="MAf89urQxbNCR8mXTlQk" version="13.10.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2020-11-20T09:11:49.815Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="L0_2-psaPertp6EZVlpL" version="13.10.0" type="github" pages="2">
   <diagram id="j1ny3Ss1Q0sh5PDAtYMi" name="flow">
-    <mxGraphModel dx="1886" dy="961" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2219" dy="1131" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="9WSpmLzHRRsmoLOSvqGu-0" />
         <mxCell id="9WSpmLzHRRsmoLOSvqGu-1" parent="9WSpmLzHRRsmoLOSvqGu-0" />
@@ -10,21 +10,20 @@
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="9WSpmLzHRRsmoLOSvqGu-1" source="9WSpmLzHRRsmoLOSvqGu-22" target="C7c_2EIT-gh8rbHYRcQ1-15">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="165" y="280" />
-              <mxPoint x="380" y="280" />
+              <mxPoint x="180" y="280" />
+              <mxPoint x="300" y="280" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="C7c_2EIT-gh8rbHYRcQ1-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="9WSpmLzHRRsmoLOSvqGu-1" source="9WSpmLzHRRsmoLOSvqGu-22" target="C7c_2EIT-gh8rbHYRcQ1-19">
+        <mxCell id="C7c_2EIT-gh8rbHYRcQ1-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="9WSpmLzHRRsmoLOSvqGu-1" source="9WSpmLzHRRsmoLOSvqGu-22" target="C7c_2EIT-gh8rbHYRcQ1-19">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="165" y="300" />
-              <mxPoint x="165" y="300" />
+              <mxPoint x="180" y="720" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="9WSpmLzHRRsmoLOSvqGu-22" value="init" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;rounded=1;shadow=0;sketch=0;glass=0;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" parent="9WSpmLzHRRsmoLOSvqGu-1" vertex="1">
-          <mxGeometry x="65" y="40" width="200" height="200" as="geometry" />
+          <mxGeometry x="80" y="40" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="hLRt6eJ45aM8rtLhUjsM-8" value="init app_manager" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;" parent="9WSpmLzHRRsmoLOSvqGu-22" vertex="1">
           <mxGeometry x="20" y="45" width="160" height="30" as="geometry" />
@@ -36,7 +35,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="9WSpmLzHRRsmoLOSvqGu-26" value="startup" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;perimeterSpacing=0;rounded=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" parent="9WSpmLzHRRsmoLOSvqGu-1" vertex="1">
-          <mxGeometry x="520" y="40" width="200" height="200" as="geometry" />
+          <mxGeometry x="440" y="40" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="9WSpmLzHRRsmoLOSvqGu-13" value="Gtk.Application startup" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;" parent="9WSpmLzHRRsmoLOSvqGu-26" vertex="1">
           <mxGeometry x="20" y="45" width="160" height="30" as="geometry" />
@@ -71,7 +70,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="hLRt6eJ45aM8rtLhUjsM-5" value="running" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;perimeterSpacing=0;rounded=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" parent="9WSpmLzHRRsmoLOSvqGu-1" vertex="1">
-          <mxGeometry x="1270" y="40" width="200" height="200" as="geometry" />
+          <mxGeometry x="1160" y="40" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-6" value="workspace_view" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;perimeterSpacing=0;rounded=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
           <mxGeometry x="800" y="320" width="200" height="200" as="geometry" />
@@ -89,7 +88,7 @@
           <mxGeometry x="20" y="80" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-15" value="app_manager" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;rounded=1;shadow=0;sketch=0;glass=0;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
-          <mxGeometry x="280" y="320" width="200" height="350" as="geometry" />
+          <mxGeometry x="200" y="320" width="200" height="350" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-26" value="signal: workspace" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;" vertex="1" parent="C7c_2EIT-gh8rbHYRcQ1-15">
           <mxGeometry x="20" y="40" width="160" height="30" as="geometry" />
@@ -133,10 +132,10 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-19" value="conf_manager" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;rounded=1;shadow=0;sketch=0;glass=0;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
-          <mxGeometry x="65" y="720" width="200" height="200" as="geometry" />
+          <mxGeometry x="80" y="720" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-41" value="xsuspender" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;perimeterSpacing=0;rounded=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
-          <mxGeometry x="1270" y="320" width="200" height="200" as="geometry" />
+          <mxGeometry x="1160" y="320" width="200" height="200" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
