@@ -60,12 +60,11 @@ class GhosterWindow(Gtk.ApplicationWindow):
         headerbar = self.generate_headerbar(settings_view=settings_view)
 
         #-- GhosterWindow construct--------#
-        self.props.resizable = False #set this and window will expand and retract based on child
+        #self.props.resizable = False #set this and window will expand and retract based on child
         self.title = "Ghoster"
         self.set_keep_above(True)
         self.get_style_context().add_class("rounded")
         self.set_size_request(650, 550) #set width to -1 to expand and retract based on content
-        self.props.window_position = Gtk.WindowPosition.CENTER_ALWAYS
         self.set_titlebar(headerbar)
         self.add(stack)
         
@@ -73,7 +72,7 @@ class GhosterWindow(Gtk.ApplicationWindow):
     def generate_headerbar(self, settings_view):
         header_label = Gtk.Label()
         header_label.props.vexpand = True
-        header_label.get_style_context().add_class("lookup-word-header")
+        header_label.get_style_context().add_class("header-label")
 
         #------ view switch ----#
         icon_theme = Gtk.IconTheme.get_default()

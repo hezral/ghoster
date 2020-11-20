@@ -19,22 +19,21 @@
 
 /* -- colors -- */
 /* ------------------------------ */
-@define-color shaded_dark shade(#6A0CAB, 0.87);
-@define-color shaded_darker shade(#6A0CAB, 0.85);
+@define-color shaded_dark shade(@theme_base_color, 0.87);
+@define-color shaded_darker shade(@theme_base_color, 0.85);
 @define-color shaded_base shade(#6A0CAB, 0.98);
 @define-color popup shade(@theme_base_color, 0.98);
 
-
 *:backdrop {
-    color: gray;
+    color: rgba(255, 255, 255, 0.5);
 }
+
 /* ------------------------------ */
 
 
 /* -- headerbar -- */
 /* ------------------------------ */
-.lookup-word-header {
-
+.header-label {
     font-size: larger;
     font-weight: bold;
 }
@@ -43,6 +42,10 @@ headerbar {
     padding-left: 16px;
     padding-right: 12px;
     padding-top: 4px;
+}
+
+headerbar, .viewswitch {
+    color: white;
 }
 /* ------------------------------ */
 
@@ -114,35 +117,90 @@ stack {
 }
 /* ------------------------------ */
 
+.appcontainer {
+    box-shadow: none;
+    border: none;
+}
+
 window, stack, headerbar {
     background-color: #6A0CAB;
-    }
-    
+}
  
 headerbar {
-
-box-shadow:
-1px 0 rgba(255,255,255,0.12) inset,
--1px 0 rgba(255,255,255,0.12) inset,
-0 1px rgba(255,255,255,0.2) inset;
-
+    box-shadow:
+        1px 0 rgba(255,255,255,0.12) inset,
+        -1px 0 rgba(255,255,255,0.12) inset,
+        0 1px rgba(255,255,255,0.2) inset;
 }
 
 window, stack#main-stack {
-box-shadow:
-1px 0 rgba(255,255,255,0.12) inset,
--1px 0 rgba(255,255,255,0.12) inset,
-0 -1px rgba(255,255,255,0.08) inset;
-
+    box-shadow:
+        1px 0 rgba(255,255,255,0.12) inset,
+        -1px 0 rgba(255,255,255,0.12) inset,
+        0 -1px rgba(255,255,255,0.08) inset;
 }
 
 box#workspace-area {
     box-shadow:
-    0 0 0 1px rgba(0,0,0,0.12),
-    0 3px 6px  rgba(0,0,0,0.16),
-    0 3px 6px  rgba(0,0,0,0.23),
-    0 14px 28px  rgba(0,0,0,0);
+        0 0 0 1px rgba(0,0,0,0.12),
+        0 3px 6px  rgba(0,0,0,0.16),
+        0 3px 6px  rgba(0,0,0,0.23),
+        0 14px 28px  rgba(0,0,0,0);
     border-radius: 4px;
+    animation: crossfader 1s ease-in-out forwards;
+}
+
+box#workspace-area:focus {
+    animation: crossfader 1s ease-in-out forwards;
 }
 
 
+@keyframes crossfader {
+        0% { opacity: 0; } 
+        03.33% { opacity: 0; }
+        06.66% { opacity: 0; }
+        09.99% { opacity: 0; }
+        13.33% { opacity: 0; }
+        16.65% { opacity: 0.5; }
+        100% { opacity: 1; }	
+}
+
+.workspaces-switcher > button {
+    border-style: none;
+    box-shadow: none;
+    background-color: transparent;
+    opacity: 0.5;
+}
+    
+.workspaces-switcher > button:checked {
+    opacity: 1;
+}
+
+.workspaces-switcher > button:hover {
+    opacity: 0.8;
+}
+
+.workspaces-switcher:backdrop {
+    opacity: 0.7;
+}
+
+label#workspace-name {
+    font-weight: bold;
+}
+
+/* grid#workspace-box {
+    transition: all 750ms ease-in-out;
+} */
+
+
+/* decoration:backdrop {
+    box-shadow:
+    0 0 0 1px rgba(0,0,0,0.6),
+    0 3px 6px  rgba(0,0,0,0.4),
+    0 3px 6px  rgba(0,0,0,0.5),
+    0 14px 28px  rgba(0,0,0,0);
+} */
+
+
+/* -- workspaces-view -- */
+/* ------------------------------ */

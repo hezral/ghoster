@@ -36,7 +36,6 @@ print(datetime.now(), "python_run", )
 from main_window import GhosterWindow
 
 
-
 #------------------CLASS-SEPARATOR------------------#
 
 class GhosterApp(Gtk.Application):
@@ -60,10 +59,12 @@ class GhosterApp(Gtk.Application):
         self.add_action(quit_action)
         self.set_accels_for_action("app.quit", ["<Ctrl>Q", "Escape"])
 
+        # set dark theme since workspaces-view will rely on dark mode colors. 
+        Gtk.Settings.get_default().set_property("gtk-application-prefer-dark-theme", True)
+        
         # set CSS provider
         provider = Gtk.CssProvider()
         provider.load_from_path("data/application.css")
-        # # provider.load_from_resource ("com/github/hezral/Ghoster/application.css")
         Gtk.StyleContext.add_provider_for_screen(Gdk.Screen.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         print(datetime.now(), "startup")
