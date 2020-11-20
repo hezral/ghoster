@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-20T14:45:02.899Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="PfTU7bNHWHmBhNIHNsd8" version="13.10.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2020-11-20T14:47:06.143Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36" etag="W60-EInnfigGzMVdMW62" version="13.10.0" type="github" pages="2">
   <diagram id="j1ny3Ss1Q0sh5PDAtYMi" name="flow">
     <mxGraphModel dx="1886" dy="961" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -88,7 +88,7 @@
           <mxGeometry x="20" y="80" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-15" value="app_manager" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;rounded=1;shadow=0;sketch=0;glass=0;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
-          <mxGeometry x="240" y="320" width="200" height="360" as="geometry" />
+          <mxGeometry x="240" y="320" width="200" height="400" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-26" value="signal: workspace" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="C7c_2EIT-gh8rbHYRcQ1-15">
           <mxGeometry x="20" y="40" width="160" height="30" as="geometry" />
@@ -100,13 +100,16 @@
           <mxGeometry x="20" y="120" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-29" value="workspaces" style="shape=datastore;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;" vertex="1" parent="C7c_2EIT-gh8rbHYRcQ1-15">
-          <mxGeometry x="60" y="180" width="80" height="60" as="geometry" />
+          <mxGeometry x="60" y="265" width="80" height="60" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-30" value="app_info" style="shape=datastore;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;" vertex="1" parent="C7c_2EIT-gh8rbHYRcQ1-15">
-          <mxGeometry x="60" y="260" width="80" height="60" as="geometry" />
+          <mxGeometry x="60" y="340" width="80" height="40" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="C7c_2EIT-gh8rbHYRcQ1-15" source="C7c_2EIT-gh8rbHYRcQ1-29" target="C7c_2EIT-gh8rbHYRcQ1-30">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="C7c_2EIT-gh8rbHYRcQ1-44" value="signal: process state" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="C7c_2EIT-gh8rbHYRcQ1-15">
+          <mxGeometry x="20" y="160" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#FF8000;endArrow=oval;endFill=1;startSize=10;endSize=10;startArrow=oval;startFill=1;" edge="1" parent="9WSpmLzHRRsmoLOSvqGu-1" source="C7c_2EIT-gh8rbHYRcQ1-26">
           <mxGeometry relative="1" as="geometry">
@@ -132,7 +135,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-19" value="conf_manager" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;rounded=1;shadow=0;sketch=0;glass=0;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
-          <mxGeometry x="80" y="720" width="200" height="200" as="geometry" />
+          <mxGeometry x="80" y="760" width="200" height="200" as="geometry" />
         </mxCell>
         <mxCell id="C7c_2EIT-gh8rbHYRcQ1-41" value="xsuspender" style="swimlane;fillColor=#6a00ff;strokeColor=#3700CC;fontColor=#ffffff;strokeWidth=2;perimeterSpacing=0;rounded=1;fontFamily=Inter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DInter;swimlaneFillColor=#ffffff;" vertex="1" parent="9WSpmLzHRRsmoLOSvqGu-1">
           <mxGeometry x="1160" y="320" width="200" height="200" as="geometry" />
