@@ -49,7 +49,7 @@ class WorkspacesView(Gtk.Grid):
         # Add custom signals for callback AppManager if application_opened/closed events are triggered
         # GObject.signal_new(signal_name, type, flags, return_type, param_types)
         # param_types is a list example [GObject.TYPE_PYOBJECT, GObject.TYPE_STRING]
-        GObject.signal_new("on-workspace-view-event", Gtk.Application, GObject.SIGNAL_RUN_LAST, GObject.TYPE_BOOLEAN, [GObject.TYPE_PYOBJECT])
+        GObject.signal_new("on-workspace-view-event", Gtk.Grid, GObject.SIGNAL_RUN_LAST, GObject.TYPE_BOOLEAN, [GObject.TYPE_PYOBJECT])
 
         display = Gdk.Display.get_default()
         monitor = display.get_primary_monitor()
@@ -104,6 +104,7 @@ class WorkspacesView(Gtk.Grid):
             self.attach(stack_switcher, 0, 2, 1, 1)
 
     def generate_view(self):
+        pass
         
 
     def on_workspace_view_event(self):

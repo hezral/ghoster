@@ -30,6 +30,7 @@ class ConfigManager():
     config = configparser.ConfigParser()
     conf_file = os.path.join(GLib.get_user_config_dir(), 'xsuspender.conf')
     conf_file = "/usr/share/doc/xsuspender/examples/xsuspender.conf"
+    conf_file = "/home/adi/.local/share/applications/appeditor-local-application-1.desktop"
 
     def __init__(self, gtk_application, *args, **kwargs):
 

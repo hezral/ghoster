@@ -23,8 +23,9 @@ import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version("Bamf", "3")
 gi.require_version("Wnck", "3.0")
-from gi.repository import Gtk, Bamf, Wnck
-
+from gi.repository import Gtk, Bamf, Wnck, Gdk, GdkX11
+import configparser
+import re
 
 # list of excluded apps by default
 exclude_list = ('Wingpanel',
@@ -37,10 +38,13 @@ class AppManager():
     
     screen = Wnck.Screen.get_default()
     matcher = Bamf.Matcher.get_default()
+    gdk_display = GdkX11.X11Display.get_default()
+
 
     def __init__(self, gtk_application, *args, **kwargs):
 
         self.screen.force_update()
+        Gdk.Window.process_all_updates()
         
         # create empty dictionary instaces for each workspace available
         # these will hold the apps info nested dictionary
@@ -52,10 +56,10 @@ class AppManager():
         #self.on_events("startup")
 
         # setup signals
-        self.screen.connect('application-opened', self.on_application_event, "app-open")
-        self.screen.connect('application-closed', self.on_application_event, "app-close")
-        self.screen.connect("workspace_created", self.on_workspace_event, "workspace-create")
-        self.screen.connect("workspace_destroyed", self.on_workspace_event, "workspace-destroy")
+        self.screen.connect('application-opened', self.on_screen_event, "app-open")
+        self.screen.connect('application-closed', self.on_screen_event, "app-close")
+        self.screen.connect("workspace_created", self.on_screen_event, "workspace-create")
+        self.screen.connect("workspace_destroyed", self.on_screen_event, "workspace-destroy")
 
     def update_workspaces(self):
 
@@ -70,9 +74,9 @@ class AppManager():
 
         for app in self.matcher.get_running_applications():
             if app.get_name() not in exclude_list:
-                self.add_application_info(app)
+                self.get_application_info(app)
 
-    def add_application_info(self, bamf_application, event_type="startup"):
+    def get_application_info(self, bamf_application):
         """ get application info and add to workspaces dictionary based which workspace the app is in """
 
         name = bamf_application.get_name()
@@ -82,6 +86,8 @@ class AppManager():
             # xid = bamf_application.get_xids()[0]
             xid = xid
             desktop_file = bamf_application.get_desktop_file()
+
+            gdk_window = GdkX11.X11Window.foreign_new_for_display(self.gdk_display, xid)
             
             # wnck_window = [window for window in self.screen.get_windows() if xid == window.get_xid()][0]
             # wnck_window.connect("workspace_changed", self.on_window_event, "window-workspace-changed")
@@ -93,13 +99,17 @@ class AppManager():
             for wnck_window in self.screen.get_windows():
                 if xid == wnck_window.get_xid():
 
-                    wnck_window.connect("workspace_changed", self.on_window_event, "window-workspace-changed")
+                    wnck_window.connect("workspace_changed", self.on_screen_event, "window-workspace-changed")
 
                     wnck_wm_class_name = wnck_window.get_class_instance_name()
                     wnck_wm_class_group = wnck_window.get_class_group_name()
 
                     wnck_app = wnck_window.get_application()
                     wnck_xid = wnck_app.get_xid()
+                    wnck_pid = wnck_window.get_pid()
+
+                    proc_state = self.parse_proc_state(wnck_pid)
+
                     icon_pixbuf = wnck_app.get_icon() #gdkpixbuf
                     icon_name = bamf_application.get_icon() #str icon_name
 
@@ -113,6 +123,7 @@ class AppManager():
                     if workspace_n is not None:
                         app_info = {
                                     "name": name, 
+                                    "wnck_pid": wnck_pid,
                                     "wnck_xid": wnck_xid, 
                                     "xid": xid, 
                                     "workspace_n": workspace_n, 
@@ -121,90 +132,101 @@ class AppManager():
                                     "icon_name": icon_name, 
                                     "desktop_file": desktop_file,
                                     "wnck_wm_class_name": wnck_wm_class_name,
-                                    "wnck_wm_class_group": wnck_wm_class_group
+                                    "wnck_wm_class_group": wnck_wm_class_group,
+                                    "gdk_window": gdk_window,
+                                    "proc_state": proc_state
                                 }
 
-                        # add app to workspace dictionary using wnck_xid as key
+                        # add app info dict to workspace dictionary using wnck_xid as key since its unique for multi window cases
                         self.workspaces[workspace_n][wnck_xid] = app_info
 
-    def on_application_event(self, wnck_screen, wnck_application, event_type):
+    def parse_proc_state(self, pid):
+        file = open("/proc" + "/" + str(pid) + "/" + "stat", "r")
+        stat = file.read()
+        cmd = re.findall(r'\(.*?\)', stat)[0]
+        stat = stat.replace(cmd, "")
+        proc_state = stat.split(" ")[2]
+        return proc_state
 
-        if wnck_application.get_name().capitalize() not in exclude_list:
-            
-            #print(event_type)
+    def on_screen_event(self, *args):
 
-            # if event_type == "open":
-            #     # add app to workspaces dictionary
-            #     for wnck_windows in wnck_application.get_windows():
-            #         bamf_xid = wnck_windows.get_xid()
-            #         bamf_application = self.matcher.get_application_for_xid(bamf_xid)
+        second_arg = locals().get('args')[1]
+        event_type = locals().get('args')[-1]
 
-            #         self.add_application_info(bamf_application)
-
-            #     # # add app to workspaces dictionary
-            #     # wnck_windows = wnck_application.get_windows()
-            #     # bamf_xid = wnck_windows[0].get_xid()
-            #     # bamf_application = self.matcher.get_application_for_xid(bamf_xid)
-
-            #     # self.add_application_info(bamf_application)
-
-            # elif event_type == "close":
-            #     # remove app from workspaces dictionary
-            #     for workspace_number in self.workspaces.copy():
-            #         for app_xid in self.workspaces[workspace_number].copy():
-            #             if app_xid == wnck_application.get_xid():
-            #                 del(self.workspaces[workspace_number][app_xid])
-            #                 #print(self.workspaces[key][subkey]["name"])
-
+        if isinstance(second_arg, Wnck.Application):
+            wnck_application = locals().get('args')[1]
+            if wnck_application.get_name().capitalize() not in exclude_list:
+                self.update_workspaces()
+                self.update_running_apps()
+        else:
             self.update_workspaces()
             self.update_running_apps()
 
-            self.on_events(event_type)
-
-    def on_workspace_event(self, wnck_screen, wnck_workspace, event_type):
-        """ add/remove workspaces dictionary as signal triggered """
-        #print(event_type)
-
-        # if event_type == "create":
-            
-        #     if wnck_workspace.get_number() not in self.workspaces.keys():
-        #         self.workspaces[wnck_workspace.get_number()] = {}
-                
-        # elif event_type == "destroy":
-
-        #     if wnck_workspace.get_number() in self.workspaces.keys():
-        #         del(self.workspaces[wnck_workspace.get_number()])
-        
-        self.update_workspaces()
-        self.update_running_apps()
-
-        #self.on_events(event_type)
-
-
-    def on_window_event(self, wnck_window, event_type):
-        print(event_type)
-
-        self.update_workspaces()
-        self.update_running_apps()
-
-        #self.on_events(event_type)
-
+        self.on_events(event_type)
 
     def on_events(self, event_type):
         # for debug
         print(event_type)
         for workspace_number in self.workspaces:
             for app_xid in self.workspaces[workspace_number]:
-                print("Workspace:", workspace_number + 1, self.workspaces[workspace_number][app_xid]["name"], self.workspaces[workspace_number][app_xid]["wnck_wm_class_name"], self.workspaces[workspace_number][app_xid]["wnck_wm_class_group"])
+                print("Workspace:", workspace_number + 1, self.workspaces[workspace_number][app_xid]["name"], self.workspaces[workspace_number][app_xid]["wnck_pid"], self.workspaces[workspace_number][app_xid]["wnck_wm_class_name"], self.workspaces[workspace_number][app_xid]["wnck_wm_class_group"], self.workspaces[workspace_number][app_xid]["proc_state"])
 
 
 apps_manager = AppManager(gtk_application=None)
 
-from conf_manager import ConfigManager
-configs_manager = ConfigManager(gtk_application=None)
+# from conf_manager import ConfigManager
+# configs_manager = ConfigManager(gtk_application=None)
 
 import signal
 from gi.repository import GLib
 GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, signal.SIGINT, Gtk.main_quit) 
 
 Gtk.main()
+
+
+
+
+
+    # def on_application_event(self, wnck_screen, wnck_application, event_type):
+    #     if wnck_application.get_name().capitalize() not in exclude_list:
+
+    #         #print(event_type)
+    #         # if event_type == "open":
+    #         #     # add app to workspaces dictionary
+    #         #     for wnck_windows in wnck_application.get_windows():
+    #         #         bamf_xid = wnck_windows.get_xid()
+    #         #         bamf_application = self.matcher.get_application_for_xid(bamf_xid)
+    #         #         self.add_application_info(bamf_application)
+    #         #     # # add app to workspaces dictionary
+    #         #     # wnck_windows = wnck_application.get_windows()
+    #         #     # bamf_xid = wnck_windows[0].get_xid()
+    #         #     # bamf_application = self.matcher.get_application_for_xid(bamf_xid)
+    #         #     # self.add_application_info(bamf_application)
+    #         # elif event_type == "close":
+    #         #     # remove app from workspaces dictionary
+    #         #     for workspace_number in self.workspaces.copy():
+    #         #         for app_xid in self.workspaces[workspace_number].copy():
+    #         #             if app_xid == wnck_application.get_xid():
+    #         #                 del(self.workspaces[workspace_number][app_xid])
+    #         #                 #print(self.workspaces[key][subkey]["name"])
+    #         self.update_workspaces()
+    #         self.update_running_apps()
+    #         self.on_events(event_type)
+
+    # def on_screen_event(self, wnck_screen, wnck_workspace, event_type):
+    #     """ add/remove workspaces dictionary as signal triggered """
+    #     #print(event_type)
+    #     # if event_type == "create":
+    #     #     if wnck_workspace.get_number() not in self.workspaces.keys():
+    #     #         self.workspaces[wnck_workspace.get_number()] = {}
+    #     # elif event_type == "destroy":
+    #     #     if wnck_workspace.get_number() in self.workspaces.keys():
+    #     #         del(self.workspaces[wnck_workspace.get_number()])
+    #     self.update_workspaces()
+    #     self.update_running_apps()
+    #     self.on_events(event_type)
+    # def on_window_event(self, wnck_window, event_type):
+    #     self.update_workspaces()
+    #     self.update_running_apps()
+    #     self.on_events(event_type)
+
