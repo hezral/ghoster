@@ -39,7 +39,7 @@
 }
 
 headerbar {
-    padding-left: 16px;
+    padding-left: 8px;
     padding-right: 12px;
     padding-top: 4px;
 }
@@ -78,49 +78,26 @@ stack {
 /* ------------------------------ */
 
 
-/* -- Ghoster icon animation -- */
-/* ------------------------------ */
-.Ghoster-icon-left {
-    animation: floating 1.5s ease-in-out infinite;
-}
 
-@keyframes float-down {
-    25% {-gtk-icon-transform: translateY(0px);}
-    75% {-gtk-icon-transform: translateY(-5px);}
-    100% {-gtk-icon-transform: translateX(0px);}
-}
-
-.Ghoster-icon-right {
-    animation: floating 1.25s ease-in-out infinite;
-}
-
-@keyframes floating {
-    25% {-gtk-icon-transform: translateY(0px);}
-    75% {-gtk-icon-transform: translateY(3px);}
-    100% {-gtk-icon-transform: translateY(0px);}
-}
-
-@keyframes floating-two {
-    from {
-        -gtk-icon-transform: translateY(60px);
-    }
-    25% {-gtk-icon-transform: translateY(60px);}
-    75% {-gtk-icon-transform: translateY(65px);}
-    100% {-gtk-icon-transform: translateY(60px);}	
-}
-
-.download-icon-start {
-    -gtk-icon-transform: translateY(60px);
-    transition: -gtk-icon-transform 1.25s;
-    animation: floating-two 1.25s ease-in-out infinite;
-
-}
 /* ------------------------------ */
 
-.appcontainer {
+.app-container, .app-container:selected {
     box-shadow: none;
     border: none;
 }
+
+/* .app-container:dir(ltr) {
+    animation: crossfader 1s ease-in-out forwards;
+} */
+
+/* .app-container:hover {
+    -gtk-icon-effect: highlight;
+} */
+
+.app-container:active {
+    opacity: 0.8;
+}
+
 
 window, stack, headerbar {
     background-color: #6A0CAB;
@@ -147,12 +124,12 @@ box#workspace-area {
         0 3px 6px  rgba(0,0,0,0.23),
         0 14px 28px  rgba(0,0,0,0);
     border-radius: 4px;
-    animation: crossfader 1s ease-in-out forwards;
+    /* animation: crossfader 1s ease-in-out forwards; */
 }
 
-box#workspace-area:focus {
+/* box#workspace-area:focus {
     animation: crossfader 1s ease-in-out forwards;
-}
+} */
 
 
 @keyframes crossfader {

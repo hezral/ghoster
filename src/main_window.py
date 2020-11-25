@@ -53,6 +53,7 @@ class GhosterWindow(Gtk.ApplicationWindow):
         stack = Gtk.Stack()
         stack.props.name = "main-stack"
         stack.props.transition_type = Gtk.StackTransitionType.CROSSFADE
+        stack.props.transition_duration = 150
         stack.add_named(settings_view, settings_view.get_name())
         stack.add_named(workspaces_view, workspaces_view.get_name())
         
@@ -64,7 +65,7 @@ class GhosterWindow(Gtk.ApplicationWindow):
         self.title = "Ghoster"
         self.set_keep_above(True)
         self.get_style_context().add_class("rounded")
-        self.set_size_request(650, 550) #set width to -1 to expand and retract based on content
+        self.set_size_request(700, 550) #set width to -1 to expand and retract based on content
         self.set_titlebar(headerbar)
         self.add(stack)
         
@@ -88,8 +89,8 @@ class GhosterWindow(Gtk.ApplicationWindow):
         headerbar = Gtk.HeaderBar()
         headerbar.pack_start(header_label)
         headerbar.pack_end(view_switch)
-        headerbar.props.show_close_button = False
-        headerbar.props.decoration_layout = "close:maximize"
+        headerbar.props.show_close_button = True
+        headerbar.props.decoration_layout = "close"
         headerbar.get_style_context().add_class("default-decoration")
         headerbar.get_style_context().add_class(Gtk.STYLE_CLASS_FLAT)
         return headerbar

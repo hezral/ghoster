@@ -34,6 +34,7 @@ print(datetime.now(), "python_run", )
 
 # Ghoster imports
 from main_window import GhosterWindow
+from app_manager import AppManager
 
 
 #------------------CLASS-SEPARATOR------------------#
@@ -48,6 +49,8 @@ class GhosterApp(Gtk.Application):
         # initialize objects
         self.window = None
  
+        self.app_manager = AppManager(gtk_application=self)
+
         print(datetime.now(), "app init")
 
     def do_startup(self):
