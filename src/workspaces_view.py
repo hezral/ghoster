@@ -172,6 +172,7 @@ class AppContainer(Gtk.Button):
                 *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.app = app_info
         self.name = app_info["name"]
         self.icon_name = app_info["icon_name"]
         self.state = app_info["proc_state"]
@@ -204,6 +205,15 @@ class AppContainer(Gtk.Button):
 
     def on_app_clicked(self, button):
         print("Clicked", self.props.name)
+
+        self.app["gdk_window"].get_scale_factor()
+
+        # monitor = Gdk.Display.get_primary_monitor(display)
+        # scale = monitor.get_scale_factor()
+
+        from gi.repository import GdkX11
+        #GdkX11.X11Display.set_window_scale(self.app["gdk_window"].get_display(), 2)
+        self.app["gdk_window"].get_display().set_window_scale(2)
 
     # def on_realize(self, *args):
     #     #print(locals())
