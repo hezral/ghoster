@@ -143,8 +143,8 @@ class WorkspaceContainer(Gtk.Grid):
         # box_for_flowbox.props.halign = box_for_flowbox.props.valign = Gtk.Align.CENTER
         # box_for_flowbox.add(flowbox)
 
-        for app_xid in workspace:
-            print("Workspace:", workspace_number + 1, workspace[app_xid]["name"], workspace[app_xid]["app_pid"], workspace[app_xid]["app_id"], workspace[app_xid]["wnck_wm_class_name"], workspace[app_xid]["wnck_wm_class_group"], workspace[app_xid]["proc_state"])
+        # for app_xid in workspace:
+        #     print("Workspace:", workspace_number + 1, workspace[app_xid]["name"], workspace[app_xid]["app_pid"], workspace[app_xid]["app_id"], workspace[app_xid]["wnck_wm_class_name"], workspace[app_xid]["wnck_wm_class_group"], workspace[app_xid]["proc_state"])
 
 
         for app_xid in workspace:

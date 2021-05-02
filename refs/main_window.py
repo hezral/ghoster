@@ -63,7 +63,7 @@ class GhosterWindow(Gtk.ApplicationWindow):
         #-- GhosterWindow construct--------#
         #self.props.resizable = False #set this and window will expand and retract based on child
         self.title = "Ghoster"
-        self.set_keep_above(True)
+        # self.set_keep_above(True)
         self.get_style_context().add_class("rounded")
         self.set_size_request(700, 550) #set width to -1 to expand and retract based on content
         self.set_titlebar(headerbar)

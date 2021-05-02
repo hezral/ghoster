@@ -81,12 +81,18 @@ class AppManager():
         """ get application info and add to workspaces dictionary based which workspace the app is in """
 
         name = bamf_application.get_name()
+        # print(bamf_application.get_application_menu())
+
+        for win in bamf_application.get_windows():
+            print(name, win.get_pid())
 
         for xid in bamf_application.get_xids():
 
             # xid = bamf_application.get_xids()[0]
             xid = xid
             desktop_file = bamf_application.get_desktop_file()
+
+            
 
             # monitor_number = bamf_application.get_window_for_xid(xid).get_monitor()
             try: 
@@ -116,6 +122,10 @@ class AppManager():
                     
                     if app_id is None:
                         app_id = wnck_window.get_class_instance_name()
+
+                    # app_id = wnck_window.get_class_instance_name()
+
+                    # print(wnck_window.get_pid())
 
                     proc_state = self.parse_proc_state(app_pid)
 
@@ -153,7 +163,6 @@ class AppManager():
                         # add app info dict to workspace dictionary using wnck_xid as key since its unique for multi window cases
                         self.workspaces[workspace_n][wnck_xid] = app_info
 
-
     def find_pid(self, wnck_window, desktop_file):
         """ very hacky way to identify app is flatpak or not """
         try:
@@ -169,6 +178,15 @@ class AppManager():
                     if item.find(app_id) != -1:
                         pid = item.split("\t")[0].rstrip() # each line output is delimited by \t or tab
                         return pid, is_flatpak, app_id
+            # elif desktop_file is None:
+            #     is_flatpak = True
+            #     run_executable = subprocess.Popen(["flatpak", "ps", "--columns=pid,application"], stdout=subprocess.PIPE)
+            #     stdout, stderr = run_executable.communicate()
+            #     for item in stdout.decode("utf-8").split("\n"): # output is delimited by \n or newline
+            #         if item.find(app_id) != -1:
+            #             pid = item.split("\t")[0].rstrip() # each line output is delimited by \t or tab
+            #             return pid, is_flatpak, app_id
+
             else:
                 pid = wnck_window.get_pid()
                 is_flatpak = False
@@ -179,8 +197,6 @@ class AppManager():
             is_flatpak = False
             app_id = None
             return pid, is_flatpak, app_id
-
-
 
     def parse_proc_state(self, pid):
         file = open("/proc" + "/" + str(pid) + "/" + "stat", "r")
@@ -195,8 +211,6 @@ class AppManager():
         second_arg = locals().get('args')[1]
         event_type = locals().get('args')[-1]
 
-        print(event_type)
-
         if isinstance(second_arg, Wnck.Application):
             wnck_application = locals().get('args')[1]
             if wnck_application.get_name().capitalize() not in exclude_list:
@@ -209,14 +223,29 @@ class AppManager():
         # self.on_events(event_type)
         workspaces_view = self.app.window.get_window_child(Gtk.Stack).get_child_by_name("workspaces-view")
         workspaces_view.emit("on-workspace-view-event", self.workspaces)
-
+        self.on_events(event_type)
 
     def on_events(self, event_type):
         # for debug
+        from gi.repository import Gio
+        all_apps = Gio.AppInfo.get_all()
+        # for app in all_apps:
+        #     if app.get_startup_wm_class() is not None:
+        #         print(app.get_startup_wm_class())
+
         print(event_type)
         for workspace_number in self.workspaces:
             for app_xid in self.workspaces[workspace_number]:
-                print("Workspace:", workspace_number + 1, "Monitor:", self.workspaces[workspace_number][app_xid]["monitor_number"], self.workspaces[workspace_number][app_xid]["name"], self.workspaces[workspace_number][app_xid]["app_pid"], self.workspaces[workspace_number][app_xid]["wnck_wm_class_name"], self.workspaces[workspace_number][app_xid]["wnck_wm_class_group"], self.workspaces[workspace_number][app_xid]["proc_state"])
+                print("Workspace:", workspace_number + 1, 
+                        # "Monitor:", self.workspaces[workspace_number][app_xid]["monitor_number"], 
+                        "Name:", self.workspaces[workspace_number][app_xid]["name"], 
+                        "ID:", self.workspaces[workspace_number][app_xid]["app_id"], 
+                        "Desktop File:", self.workspaces[workspace_number][app_xid]["desktop_file"], 
+                        "PID:", self.workspaces[workspace_number][app_xid]["app_pid"], 
+                        "WM_CLASS_NAME:", self.workspaces[workspace_number][app_xid]["wnck_wm_class_name"], 
+                        "WM_CLASS_GROUP:", self.workspaces[workspace_number][app_xid]["wnck_wm_class_group"], 
+                        # self.workspaces[workspace_number][app_xid]["proc_state"]
+                        )
 
 
 # apps_manager = AppManager(gtk_application=None)

@@ -1,0 +1,7 @@
+data/com.github.hezral.ghoster.desktop.in
+data/com.github.hezral.ghoster.appdata.xml.in
+data/com.github.hezral.ghoster.gschema.xml
+src/window.ui
+src/main.py
+src/window.py
+
