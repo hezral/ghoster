@@ -1,8 +1,8 @@
 {
     "app-id" : "com.github.hezral.ghoster",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.34",
-    "sdk" : "org.gnome.Sdk",
+    "runtime" : "io.elementary.Sdk",
+    "runtime-version" : "daily",
+    "sdk" : "io.elementary.Sdk",
     "command" : "ghoster",
     "finish-args" : [
         "--share=network",
@@ -29,7 +29,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///home/adi/Work/Builder/ghoster"
+                    "url" : "."
                 }
             ]
         }
